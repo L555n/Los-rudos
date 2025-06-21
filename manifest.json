@@ -1,0 +1,10 @@
+
+{
+  "name": "Menú Los Rudos",
+  "short_name": "Los Rudos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Menú accesible sin internet",
+  "icons": []
+}
