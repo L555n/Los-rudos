@@ -67,9 +67,14 @@
 
     <div id="searchResults"></div>
 
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <!-- Carga PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
+        // Configuración para que PDF.js funcione
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
         const url = 'https://l555n.github.io/Los-rudos/assets/Menuu.pdf';
+
         let pdfDoc = null,
             pageNum = 1,
             scale = 1.5,
@@ -147,10 +152,12 @@
             searchText(term);
         });
 
+        // Registro del Service Worker para modo offline
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service-worker.js');
         }
 
+        // Cargar el PDF
         pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
             pdfDoc = pdfDoc_;
             document.getElementById('page_count').textContent = pdfDoc.numPages;
@@ -161,3 +168,5 @@
     </script>
 </body>
 </html>
+
+
